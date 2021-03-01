@@ -1,0 +1,14 @@
+THINGS TODO:
+Listed down some of the items that i planned to do in this project but restricted due to time or scope of this project
+
+*	Dependency injection through pico-containers as this will help in instantiating object of other page object classes or utilities. 
+	Driver can also be shared with multiple step definition files. This is a must to do in a bigger project.
+*	A better logging 
+*	A better tear down for bigger projects is a must including taking screen shots and attaching application logs if possible.
+
+Good to haves:
+*	Documentation for test methods describing method actions, input parameters and return values.
+*	Integrate a custom reports 
+*	Create Scenario context to share context between steps or any action to be performed at framework level
+*	Better exception handling -more specfic exceptions and sending them to logs
+*	Still step definition methods can be a little more modularized

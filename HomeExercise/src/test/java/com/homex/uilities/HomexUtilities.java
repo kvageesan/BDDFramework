@@ -7,8 +7,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Properties;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -40,12 +42,23 @@ public class HomexUtilities{
 		setDriverWait(timeout).until(ExpectedConditions.elementToBeClickable(element));
 	}
 	
-	/*
-	public void waitForPageLoadComplete(WebDriver driver, int timeout) {
-	    Wait<WebDriver> wait = new WebDriverWait(driver, timeout);
-	    wait.until(driver -> String.valueOf(((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete")));
+	public void waitForElementNotBeingStale(WebElement element, int timeout) {
+		setDriverWait(timeout).until(ExpectedConditions.refreshed(ExpectedConditions.stalenessOf(element)));
 	}
-	*/
+	
+	public void waitForElementNotBeingStaleForClick(WebElement element, int timeout) {
+		setDriverWait(timeout).until(ExpectedConditions.refreshed(ExpectedConditions.elementToBeClickable(element)));
+	}
+
+    public void waitForPageLoad(WebDriver driver, int timeout) {
+        ExpectedCondition<Boolean> pageLoadCondition = new
+                ExpectedCondition<Boolean>() {
+                    public Boolean apply(WebDriver driver) {
+                        return ((JavascriptExecutor)driver).executeScript("return document.readyState").equals("complete");
+                    }
+                };
+        setDriverWait(timeout).until(pageLoadCondition);
+    }
 	
 	private WebDriverWait setDriverWait(int timeout) {
 		if (timeout ==0 ) timeout = TIMEOUT;

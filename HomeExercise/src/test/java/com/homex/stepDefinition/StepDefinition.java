@@ -32,7 +32,7 @@ public class StepDefinition {
 	}
 	
 	@Given("I send and save a random message")
-	public void i_send_and_save_a_message() {
+	public void i_send_and_save_a_message() throws InterruptedException{
 		string = "test"+Integer.toString(10000 + new Random().nextInt(99999));
 		slackHomePage = new SlackHomePage(driver);
 		slackHomePage.sendAndSaveText(string);
@@ -44,7 +44,7 @@ public class StepDefinition {
 	}
 
 	@Then("I verify the message is displayed")
-	public void i_verify_message_is_displayed() throws InterruptedException {
+	public void i_verify_message_is_displayed() {
 		slackHomePage.verifySearchText(string);
 	}
 
@@ -52,7 +52,9 @@ public class StepDefinition {
 	public void i_verify_search_string_is_displayed_under_saved_messages_section() {
 		slackHomePage.verifySavedMessage(string);
 	}
-	
+
+	//This should be moved to framework file when i implement dependency injection 
+	// and share driver instance outside. For not keeping it here.
 	@After
 	public void tearDown() {
 		driver.quit();

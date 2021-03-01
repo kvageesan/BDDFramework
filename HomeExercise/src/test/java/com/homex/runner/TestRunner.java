@@ -7,10 +7,8 @@ import io.cucumber.junit.CucumberOptions;
 @RunWith(Cucumber.class)
 @CucumberOptions(
 		features="classpath:features",
-		glue="stepDefinition",
-		tags="userflows",
-		plugin = {"pretty", "html:target"}
+				glue="com.homex.stepDefinition"
 		)
+	
 public class TestRunner {
-	//Test runner class
 }
