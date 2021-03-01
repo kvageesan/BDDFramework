@@ -6,6 +6,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import com.homex.uilities.HomexUtilities;
 
+import io.cucumber.java.After;
+
 
 public class InitializeDriver {
 
@@ -28,11 +30,5 @@ public class InitializeDriver {
 		}
 	}
 	
-	
-	//	**** DELETE - Change location	********
-	
-	public void tearDown() {
-		driver.quit();
-	}
 	
 }

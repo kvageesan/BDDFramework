@@ -146,19 +146,5 @@ public class SlackHomePage {
 		}
 	}
 
-	//Just written the clean up method for this specific assignment to rerun multiple times. 
-	//On an actual implementation, we would not need clean for test like the current user flow. 
-	/*
-	//It can be very well handled in script through element iteration.
-	public void cleanupStarredDate() {
-		tabGeneral.click();
-		utility.waitForElementToAppear(btnSearchText, 10); 
-		btnSearchText.click();
-		btnMoreAction.click();
-		utility.waitForElementToAppear(btnDelete, 10); 
-		btnDelete.click();
-	}
-	 */
-
 
 }

@@ -8,6 +8,7 @@ import java.util.Random;
 
 import org.openqa.selenium.WebDriver;
 
+import io.cucumber.java.After;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -51,5 +52,9 @@ public class StepDefinition {
 	public void i_verify_search_string_is_displayed_under_saved_messages_section() {
 		slackHomePage.verifySavedMessage(string);
 	}
-
+	
+	@After
+	public void tearDown() {
+		driver.quit();
+	}
 }
